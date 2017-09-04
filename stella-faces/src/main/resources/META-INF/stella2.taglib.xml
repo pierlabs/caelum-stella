@@ -63,10 +63,5 @@
 		</validator>
 	</tag>
 
-	<tag>
-		<tag-name>inputCNPJ</tag-name>
-		<source>inputCNPJ.xhtml</source>
-	</tag>
-
 </facelet-taglib>
 

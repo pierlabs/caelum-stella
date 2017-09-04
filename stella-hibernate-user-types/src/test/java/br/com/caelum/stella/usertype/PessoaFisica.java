@@ -1,3 +1,4 @@
+
 package br.com.caelum.stella.usertype;
 
 import javax.persistence.Entity;
@@ -11,27 +12,32 @@ import br.com.caelum.stella.tinytype.CPF;
 
 @Entity
 public class PessoaFisica {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
 
-	public Long getId() {
-		return id;
-	}
+     @Id
+     @GeneratedValue(strategy = GenerationType.AUTO)
+     private Long id;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+     public Long getId() {
 
-	@Type(type = "br.com.caelum.stella.usertype.CpfUserType")
-	private CPF cpf;
+          return id;
+     }
 
-	public CPF getCpf() {
-		return cpf;
-	}
+     public void setId(Long id) {
 
-	public void setCpf(CPF cpf) {
-		this.cpf = cpf;
-	}
+          this.id = id;
+     }
+
+     @Type(type = "br.com.caelum.stella.usertype.CpfUserType")
+     private CPF cpf;
+
+     public CPF getCpf() {
+
+          return cpf;
+     }
+
+     public void setCpf(CPF cpf) {
+
+          this.cpf = cpf;
+     }
 
 }
