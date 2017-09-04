@@ -1,5 +1,20 @@
 ChangeLog
 
+V2.0-beta3
+
+* stella Bean Validation
+    Ajustes em casos de testes.
+	
+* Stella Faces
+    Adição da dependência para Servlet, retirada de duplicação no arquivo stella2.taglib.xml para retirada de duplicidade de tag.
+	
+* Stella Boleto
+	Modificação na classe Boleto para colocação do atributo para determinar se o boleto é registrado ou não.
+	Refatoração dos métodos para recuperar o valorFormatado e o fatorVencimento.
+	
+* Stella Hibernate User Types
+    Ajustes de casos de testes.
+	
 V2.0-beta2
 
 * Stella Core
