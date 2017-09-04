@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import br.com.caelum.stella.DigitoGenerator;
 import br.com.caelum.stella.DigitoPara;
 import br.com.caelum.stella.MessageProducer;
 import br.com.caelum.stella.SimpleMessageProducer;
@@ -71,8 +72,8 @@ public class CNPJValidator implements Validator<String> {
     	List<ValidationMessage> errors = new ArrayList<ValidationMessage>();    	
         
         if (cnpj != null) {
-        	
-        	if(isFormatted && !FORMATED.matcher(cnpj).matches()){
+
+        	if(isFormatted != FORMATED.matcher(cnpj).matches()) {
         		errors.add(messageProducer.getMessage(CNPJError.INVALID_FORMAT));
         	}
         	
@@ -118,6 +119,9 @@ public class CNPJValidator implements Validator<String> {
 	}
 
     public boolean isEligible(String value) {
+		if (value == null) {
+			return false;
+		}
         boolean result;
         if (isFormatted) {
             result = FORMATED.matcher(value).matches();
@@ -141,4 +145,13 @@ public class CNPJValidator implements Validator<String> {
         return getInvalidValues(cnpj);
     }
 
+    @Override
+	public String generateRandomValid() {
+		final String cnpjSemDigitos = new DigitoGenerator().generate(12);
+		final String cnpjComDigitos = cnpjSemDigitos + calculaDigitos(cnpjSemDigitos);
+		if (isFormatted) {
+			return new CNPJFormatter().format(cnpjComDigitos);
+		}
+		return cnpjComDigitos;
+	}
 }

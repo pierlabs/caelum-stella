@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import br.com.caelum.stella.DigitoGenerator;
 import br.com.caelum.stella.DigitoPara;
 import br.com.caelum.stella.MessageProducer;
 import br.com.caelum.stella.SimpleMessageProducer;
@@ -113,7 +114,7 @@ public class CPFValidator implements Validator<String> {
 		List<ValidationMessage> errors = new ArrayList<ValidationMessage>();
 
 		if (cpf != null) {
-			if (isFormatted && !FORMATED.matcher(cpf).matches()) {
+			if (isFormatted != FORMATED.matcher(cpf).matches()) {
 				errors.add(messageProducer.getMessage(CPFError.INVALID_FORMAT));
 			}
 
@@ -197,4 +198,13 @@ public class CPFValidator implements Validator<String> {
 		return getInvalidValues(cpf);
 	}
 
+	@Override
+	public String generateRandomValid() {
+		final String cpfSemDigitos = new DigitoGenerator().generate(9);
+		final String cpfComDigitos = cpfSemDigitos + calculaDigitos(cpfSemDigitos);
+		if (isFormatted) {
+			return new CPFFormatter().format(cpfComDigitos);
+		}
+		return cpfComDigitos;
+	}
 }
