@@ -4,7 +4,6 @@ import static br.com.caelum.stella.boleto.utils.StellaStringUtils.leftPadWithZer
 
 import java.net.URL;
 
-import br.com.caelum.stella.boleto.Banco;
 import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.bancos.gerador.GeradorDeDigitoSantander;
@@ -23,7 +22,7 @@ public class Santander extends AbstractBanco {
 		StringBuilder campoLivre = new StringBuilder("9");
 		campoLivre.append(getNumeroConvenioFormatado(beneficiario));
 		campoLivre.append(getNossoNumeroFormatado(beneficiario));
-		campoLivre.append("0").append(beneficiario.getCarteira());
+		campoLivre.append("0").append(getCarteiraFormatado(beneficiario));
 		return new CodigoDeBarrasBuilder(boleto).comCampoLivre(campoLivre);
 	}
 	
