@@ -23,7 +23,7 @@ public class Santander extends AbstractBanco {
 		StringBuilder campoLivre = new StringBuilder("9");
 		campoLivre.append(getNumeroConvenioFormatado(beneficiario));
 		campoLivre.append(getNossoNumeroFormatado(beneficiario));
-		campoLivre.append("0").append(getCarteiraFormatado(beneficiario));
+		campoLivre.append("0").append( getCarteiraFormatado(beneficiario));
 		return new CodigoDeBarrasBuilder(boleto).comCampoLivre(campoLivre);
 	}
 	
