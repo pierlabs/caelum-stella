@@ -8,6 +8,10 @@ import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.bancos.gerador.GeradorDeDigitoSantander;
 
+/**
+ * Gerar Boleto do Banco Santander
+ * 
+ */
 public class Santander extends AbstractBanco {
 
 	private static final long serialVersionUID = 1L;
