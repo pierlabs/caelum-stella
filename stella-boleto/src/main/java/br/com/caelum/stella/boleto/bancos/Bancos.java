@@ -43,9 +43,15 @@ public enum Bancos {
 		}
 	},
 	SANTANDER("033", "Santander") {
+	     @Override
+	     public Banco getBanco() {
+	          return new Santander();
+	     }
+	},
+	BMG("318", "BMG") {
 		@Override
 		public Banco getBanco() {
-			return new Santander();
+			return new BMG();
 		}
 	};
 
