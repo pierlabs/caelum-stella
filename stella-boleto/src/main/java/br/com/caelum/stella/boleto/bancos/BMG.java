@@ -17,6 +17,8 @@ public class BMG extends AbstractBanco {
 	private static final long serialVersionUID = 1L;
 
 	private final static String NUMERO_BMG = "318";
+	
+	private static final String DIGITO_NUMERO_BMG = "2";
 
 	private GeradorDeDigitoSantander gdivBMG = new GeradorDeDigitoSantander();
 
@@ -67,7 +69,7 @@ public class BMG extends AbstractBanco {
 	public String getNumeroFormatadoComDigito() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(NUMERO_BMG).append("-");
-		return builder.toString();
+		return builder.append(DIGITO_NUMERO_BMG).toString();
 	}
 
 	@Override
