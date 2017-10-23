@@ -58,11 +58,7 @@ public class BMG extends AbstractBanco {
 
 	@Override
 	public String getNossoNumeroFormatado(Beneficiario beneficiario) {
-		String nossoNumero = beneficiario.getNossoNumero();
-		if (beneficiario.getDigitoNossoNumero() != null) {
-			return leftPadWithZeros(nossoNumero+beneficiario.getDigitoNossoNumero(), 10);
-		} 
-		return leftPadWithZeros(nossoNumero+getGeradorDeDigito().calculaDVNossoNumero(nossoNumero), 10);
+		return leftPadWithZeros(beneficiario.getNossoNumero(), 10);
 	}
 
 	@Override
