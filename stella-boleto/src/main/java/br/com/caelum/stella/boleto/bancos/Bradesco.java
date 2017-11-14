@@ -92,7 +92,8 @@ public class Bradesco extends AbstractBanco implements Banco {
       * @param beneficiario
       * @return String
       */
-     public String nossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
+     @Override
+     public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
 
           String carteiraFormatada = leftPadWithZeros(beneficiario.getCarteira(), 3);
 

@@ -115,4 +115,17 @@ public class HSBC extends AbstractBanco implements Banco {
 						.mod(11);
 	}
 	
+	    
+     /**
+      * Método para cálculo do dígito verificador do campo Nosso Número.
+      * 
+      * @param beneficiario
+      * @return String
+      */
+     @Override
+     public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
+          
+          return beneficiario.getNossoNumero();
+          
+    }
 }

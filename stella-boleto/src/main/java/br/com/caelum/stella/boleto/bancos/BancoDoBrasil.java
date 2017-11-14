@@ -117,5 +117,19 @@ public class BancoDoBrasil extends AbstractBanco implements Banco {
 			return getNossoNumeroParaCarteiras17e18(beneficiario);
 		}
 	}
+	
+	    
+     /**
+      * Método para cálculo do dígito verificador do campo Nosso Número.
+      * 
+      * @param beneficiario
+      * @return String
+      */
+     @Override
+     public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
+          
+          return beneficiario.getNossoNumero();
+          
+    }
 
 }
