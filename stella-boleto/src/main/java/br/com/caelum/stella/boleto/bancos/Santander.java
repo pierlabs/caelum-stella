@@ -95,4 +95,18 @@ public class Santander extends AbstractBanco {
 	public String getNumeroConvenioFormatado(Beneficiario beneficiario) {
 		return leftPadWithZeros(beneficiario.getNumeroConvenio(), 7);
 	}
+
+     /**
+      * Método para cálculo do dígito verificador do campo Nosso Número.
+      * 
+      * @param beneficiario
+      * @return String
+      */
+     @Override
+     public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
+          
+          return beneficiario.getNossoNumero();
+          
+    }
+     
 }
