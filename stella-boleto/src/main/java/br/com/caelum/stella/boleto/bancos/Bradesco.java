@@ -1,9 +1,12 @@
 package br.com.caelum.stella.boleto.bancos;
 
+import static br.com.caelum.stella.boleto.utils.StellaStringUtils.leftPadWithZeros;
+
+import java.math.BigDecimal;
+
 import br.com.caelum.stella.boleto.Banco;
 import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
-import static br.com.caelum.stella.boleto.utils.StellaStringUtils.leftPadWithZeros;
 
 /**
  * Gera dados de um boleto relativos ao Banco Bradesco.
@@ -83,4 +86,72 @@ public class Bradesco extends AbstractBanco implements Banco {
 				? "-" + beneficiario.getDigitoNossoNumero() : "";
 	}
 
+     /**
+      * Método para cálculo do dígito verificador do campo Nosso Número
+      * 
+      * @param beneficiario
+      * @return String
+      */
+     public String nossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
+
+          String carteiraFormatada = leftPadWithZeros(beneficiario.getCarteira(), 3);
+
+          String numeroDocumentoFormatada = leftPadWithZeros(beneficiario.getNossoNumero(), 11);
+
+          String campo = carteiraFormatada + numeroDocumentoFormatada;
+
+          String bytResult = "0";
+
+          Integer intSoma = 0;
+
+          Integer bytMultiplicador = 2;
+
+          Integer bytTamanho = campo.length();
+
+          Integer bytCont = 0;
+
+          Integer bytResultado = 0;
+
+          while (bytCont < bytTamanho - 1) {
+
+               if (bytMultiplicador < 7) {
+
+                    bytResultado = new BigDecimal(campo.substring(bytTamanho - (bytCont + 1), bytTamanho - bytCont)).multiply(new BigDecimal(bytMultiplicador)).intValue();
+
+                    bytMultiplicador += 1;
+
+               } else {
+
+                    bytResultado = new BigDecimal(campo.substring(bytTamanho - (bytCont + 1), bytTamanho - bytCont)).multiply(new BigDecimal(bytMultiplicador)).intValue();
+
+                    bytMultiplicador = 2;
+
+               }
+
+               intSoma += bytResultado;
+
+               bytCont += 1;
+          }
+
+          bytResultado = intSoma % 11;
+
+          if (bytResultado != 0) {
+
+               bytResultado = 11 - bytResultado;
+
+               if (bytResultado == 10) {
+
+                    bytResult = "P";
+
+               } else {
+
+                    bytResult = String.valueOf(bytResultado);
+
+               }
+          }
+
+          return numeroDocumentoFormatada + bytResult;
+
+     }
+	
 }
