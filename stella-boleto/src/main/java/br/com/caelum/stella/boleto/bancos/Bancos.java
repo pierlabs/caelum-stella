@@ -53,6 +53,12 @@ public enum Bancos {
 		public Banco getBanco() {
 			return new BMG();
 		}
+	},
+	BANCO_AGIPLAN("121", "Banco Agiplan"){
+		@Override
+		public Banco getBanco() {
+			return new BancoAgiplan();
+		}
 	};
 
 	private final String numeroDoBanco;
