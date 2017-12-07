@@ -7,14 +7,15 @@ import java.net.URL;
 import br.com.caelum.stella.boleto.Beneficiario;
 import br.com.caelum.stella.boleto.Boleto;
 import br.com.caelum.stella.boleto.bancos.gerador.GeradorDeDigitoBancoAgiplan;
-import br.com.caelum.stella.boleto.bancos.gerador.GeradorDeDigitoSantander;
 
-public class BancoAgiplan extends AbstractBanco{
+public class BancoAgiplan extends AbstractBanco {
 
 
 	private static final long serialVersionUID = 1L;
 	private static final String NUMERO_BANCO_AGIPLAN = "121";
 	private static final String DIGITO_NUMERO_BANCO_AGIPLAN = "1";
+	private static final String COD_CEDENTE = "000000000001";
+	private static final String LAYOUT = "4";
 	private GeradorDeDigitoBancoAgiplan gdivBancoAgiplan = new GeradorDeDigitoBancoAgiplan();
 
 	@Override
@@ -33,10 +34,10 @@ public class BancoAgiplan extends AbstractBanco{
 	public String geraCodigoDeBarrasPara(Boleto boleto) {
 		Beneficiario beneficiario = boleto.getBeneficiario();
 		StringBuilder campoLivre = new StringBuilder("");
-		campoLivre.append(beneficiario.getAgenciaFormatada());
-		campoLivre.append(leftPadWithZeros(beneficiario.getCodigoBeneficiario(), 10));
-		campoLivre.append("0");
-		campoLivre.append(getNossoNumeroComDigitoVerificador(beneficiario));
+		campoLivre.append(COD_CEDENTE);
+		campoLivre.append(boleto.getBanco().getNossoNumeroFormatado(beneficiario));
+		campoLivre.append(boleto.getBanco().getCarteiraFormatado(beneficiario));
+		campoLivre.append(LAYOUT);
 		return new CodigoDeBarrasBuilder(boleto).comCampoLivre(campoLivre);
 	}
 
