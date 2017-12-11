@@ -97,16 +97,46 @@ public class Santander extends AbstractBanco {
 	}
 
      /**
-      * Método para cálculo do dígito verificador do campo Nosso Número.
+      * Método para gerar o nosso número concatenado com o dígito de controle
       * 
       * @param beneficiario
       * @return String
       */
      @Override
      public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
-          
-          return beneficiario.getNossoNumero();
-          
-    }
+
+          return beneficiario.getNossoNumero() + gerarDigitoControleNossoNumero(beneficiario.getNossoNumero());
+     }
      
+     /**
+      * Método para calcular o dígito de controle do nosso número 
+      * 
+      * @param nossoNumero
+      * @return String
+      */
+     public String gerarDigitoControleNossoNumero(String nossoNumero) {
+
+          int somaNossoNumero = 0;
+          int multiplicador = 2;
+          int multiplicacao = 0;
+
+          for (int i = nossoNumero.length() - 1; i >= 0; i--) {
+
+               multiplicacao = Integer.parseInt(nossoNumero.substring(i, 1 + i)) * multiplicador;
+               somaNossoNumero = somaNossoNumero + multiplicacao;
+
+               if (multiplicador == 9) {
+                    multiplicador = 2;
+               } else {
+                    multiplicador++;
+               }
+          }
+
+          int digitoControle = 11 - (somaNossoNumero % 11);
+          if (digitoControle > 9) {
+               digitoControle = 0;
+          }
+
+          return String.valueOf(digitoControle);
+     }
 }
