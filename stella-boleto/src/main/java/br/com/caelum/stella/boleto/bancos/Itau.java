@@ -15,6 +15,8 @@ public class Itau extends AbstractBanco implements Banco {
 
 	private static final String NUMERO_ITAU = "341";
 	private static final String DIGITO_ITAU = "7";
+	private static final String CODIGO_BOLETO_REGISTRADO = "02";     
+	private static final String CODIGO_BOLETO_REJEITADO = "03";
 
 	@Override
 	public String geraCodigoDeBarrasPara(Boleto boleto) {
@@ -92,6 +94,17 @@ public class Itau extends AbstractBanco implements Banco {
      public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
           
           return beneficiario.getNossoNumero();
-          
     }
+
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }

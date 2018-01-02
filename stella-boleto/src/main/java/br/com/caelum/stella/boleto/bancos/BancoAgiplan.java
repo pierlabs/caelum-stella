@@ -16,6 +16,8 @@ public class BancoAgiplan extends AbstractBanco {
 	private static final String DIGITO_NUMERO_BANCO_AGIPLAN = "1";
 	private static final String COD_CEDENTE = "000000000001";
 	private static final String LAYOUT = "4";
+     private static final String CODIGO_BOLETO_REGISTRADO = "02";     
+     private static final String CODIGO_BOLETO_REJEITADO = "03";
 	private GeradorDeDigitoBancoAgiplan gdivBancoAgiplan = new GeradorDeDigitoBancoAgiplan();
 
 	@Override
@@ -73,4 +75,15 @@ public class BancoAgiplan extends AbstractBanco {
 		return gdivBancoAgiplan;
 	}
 
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }

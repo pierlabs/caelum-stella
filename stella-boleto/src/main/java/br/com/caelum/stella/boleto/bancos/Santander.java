@@ -18,6 +18,9 @@ public class Santander extends AbstractBanco {
 
 	private final static String NUMERO_SANTANDER = "033";
 	private final static String DIGITO_SANTANDER = "7";
+	private static final String CODIGO_BOLETO_REGISTRADO = "02";
+	private static final String CODIGO_BOLETO_REJEITADO = "03";
+	
 	private GeradorDeDigitoSantander gdivSantander = new GeradorDeDigitoSantander();
 
 	@Override
@@ -138,5 +141,17 @@ public class Santander extends AbstractBanco {
           }
 
           return String.valueOf(digitoControle);
+     }
+
+     @Override
+     public String getCodigoBoletoRegistrado() {
+
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+
+     @Override
+     public String getCodigoBoletoRejeitado() {
+
+          return CODIGO_BOLETO_REJEITADO;
      }
 }

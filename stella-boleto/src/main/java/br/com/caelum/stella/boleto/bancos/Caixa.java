@@ -14,6 +14,8 @@ public class Caixa extends AbstractBanco implements Banco {
 
 	private static final String NUMERO_CAIXA = "104";
 	private static final String DIGITO_CAIXA = "0";
+     private static final String CODIGO_BOLETO_REGISTRADO = "02";     
+     private static final String CODIGO_BOLETO_REJEITADO = "03";
 
 	@Override
 	public String geraCodigoDeBarrasPara(Boleto boleto) {
@@ -113,4 +115,16 @@ public class Caixa extends AbstractBanco implements Banco {
           return beneficiario.getNossoNumero();
           
     }
+
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }

@@ -23,7 +23,8 @@ public class BancoDoBrasil extends AbstractBanco implements Banco {
 	private static final String CARTEIRA_18 = "18";
 	private static final String ZEROS_CONVENIOS_NOVOS = "000000";
 	private static final String TIPO_MODALIDADE_COBRANCA_CARTEIRA_SEM_REGISTRO = "21";
-
+     private static final String CODIGO_BOLETO_REGISTRADO = "02";     
+     private static final String CODIGO_BOLETO_REJEITADO = "03";
 
 	@Override
 	public String geraCodigoDeBarrasPara(Boleto boleto) {
@@ -130,6 +131,17 @@ public class BancoDoBrasil extends AbstractBanco implements Banco {
           
           return beneficiario.getNossoNumero();
           
-    }
+     }
 
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }
