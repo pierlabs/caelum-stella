@@ -19,6 +19,10 @@ public class BMG extends AbstractBanco {
 	private final static String NUMERO_BMG = "318";
 	
 	private static final String DIGITO_NUMERO_BMG = "2";
+	
+     private static final String CODIGO_BOLETO_REGISTRADO = "02";
+     
+     private static final String CODIGO_BOLETO_REJEITADO = "03";
 
 	private GeradorDeDigitoSantander gdivBMG = new GeradorDeDigitoSantander();
 
@@ -106,6 +110,17 @@ public class BMG extends AbstractBanco {
      public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
           
           return beneficiario.getNossoNumero();
-          
-    }
+     }
+
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }

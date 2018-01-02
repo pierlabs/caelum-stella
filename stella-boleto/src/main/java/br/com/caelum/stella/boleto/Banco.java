@@ -52,6 +52,20 @@ public interface Banco extends Serializable {
 	 */
 	String geraCodigoDeBarrasPara(Boleto boleto);
 
+     /**
+      * Retorna o código referente ao status de sucesso de registro de boleto.
+      * 
+      * @return código de registrado
+      */
+     String getCodigoBoletoRegistrado();
+
+     /**
+      * Retorna o código referente ao status de rejeição de registro de boleto.
+      * 
+      * @return código de rejeição
+      */
+     String getCodigoBoletoRejeitado();
+
 	String getCodigoBeneficiarioFormatado(Beneficiario beneficiario);
 
 	String getCarteiraFormatado(Beneficiario beneficiario);

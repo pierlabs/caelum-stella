@@ -18,6 +18,8 @@ public class HSBC extends AbstractBanco implements Banco {
 	private static final String DIGITO_HSBC = "9";
 	private static final String CODIGO_APLICATIVO = "2";
 	private static final String CARTEIRA_NAO_REGISTRADA = "CNR";
+	private static final String CODIGO_BOLETO_REGISTRADO = "07";     
+	private static final String CODIGO_BOLETO_REJEITADO = "08";
 
 	@Override
 	public String getNumeroFormatadoComDigito() {
@@ -126,6 +128,17 @@ public class HSBC extends AbstractBanco implements Banco {
      public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
           
           return beneficiario.getNossoNumero();
-          
     }
+
+     @Override
+     public String getCodigoBoletoRegistrado() {
+     
+          return CODIGO_BOLETO_REGISTRADO;
+     }
+     
+     @Override
+     public String getCodigoBoletoRejeitado() {
+     
+          return CODIGO_BOLETO_REJEITADO;
+     }
 }
