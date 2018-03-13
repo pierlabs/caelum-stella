@@ -67,7 +67,7 @@ public class BancoAgiplan extends AbstractBanco {
 
 	@Override
 	public String getNossoNumeroComDigitoVerificador(Beneficiario beneficiario) {
-		return getGeradorDeDigito().calculaDVNossoNumero(getCarteiraFormatado(beneficiario)+beneficiario.getNossoNumero());
+		return beneficiario.getNossoNumero()+getGeradorDeDigito().calculaDVNossoNumero(getCarteiraFormatado(beneficiario)+beneficiario.getNossoNumero());
 	}
 	
 	@Override
